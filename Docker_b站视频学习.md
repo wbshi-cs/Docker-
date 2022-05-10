@@ -72,6 +72,10 @@ docker image build  / docker build
 
 ​	（2）当前路径下执行：docker build -t [REPOSITORY[:TAG]] .
 
+4、进入正在运行的container中：
+
+docker exec -it container-id /bin/bash
+
 ### 3.4 Dockerfile语法梳理
 
 ![](图片/3/3.4.1.png)
@@ -97,6 +101,32 @@ docker image build  / docker build
 ![3.5.1](图片/3/3.5.1.png)
 
 ![3.5.2](图片/3/3.5.2.png)
+
+![3.5.3](图片/3/3.5.3.png)
+
+![3.5.4](图片/3/3.5.4.png)
+
+### 3.6 发布镜像
+
+1、www.docker.com上拥有自己的账号。
+
+2、本地输入：docker login，输入账号密码进行登录。
+
+3、docker push  [REPOSITORY[:TAG]]
+
+### 3.7 Dockerfile实战
+
+例子1：
+
+```
+FROM python:2.7
+LABEL maintainer="wbshi<1281867218@qq.com>"
+RUN pip install flask
+COPY app.py /app/
+WORKDIR /app
+EXPOSE 5000
+CMD python app.py
+```
 
 
 
